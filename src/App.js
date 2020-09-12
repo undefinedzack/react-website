@@ -1,24 +1,19 @@
-import React from 'react';
-// import logo from './logo.svg';
-import {Navbar, NavbarBrand} from "react-bootstrap";
-import Menu from "./components/MenuComponent";
+import React, {Component} from 'react';
+import Main from "./components/MainComponent";
 import './App.css';
 
-function App() {
-  return (
-    <div>
-      <Navbar className={"bg-danger navbar-dark"}>
-        <div className="container">
-          <NavbarBrand href={"/"}>
-            Ristorante Con Fusion
-          </NavbarBrand>
-        </div>
-      </Navbar>
+class App extends Component {
 
-      <Menu />
+    render() {
+        return (
+            <div>
+                <Main />
 
-    </div>
-  );
+            </div>
+        );
+    }
 }
+
+
 
 export default App;
