@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import {Card} from "react-bootstrap";
+import {Breadcrumb, BreadcrumbItem, Card} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 class DishDetail extends Component{
 
@@ -9,9 +10,9 @@ class DishDetail extends Component{
 
 
          if (this.props.dish != null){
-            const comments = current_dish.comments.map((comment) => {
+            const comments = this.props.comments.map((comment) => {
              return (
-                 <div key={current_dish.comments.id} className={"row"}>
+                 <div key={this.props.comments.id} className={"row"}>
                      <div className={"col-12 m-2"}>
                          {comment.comment}
                      </div>
@@ -24,6 +25,16 @@ class DishDetail extends Component{
 
             return (
                 <div className={"container"}>
+                    <div className={"row"}>
+                        <Breadcrumb>
+                            <BreadcrumbItem><Link to={'/menu'}>Menu</Link></BreadcrumbItem>
+                            <BreadcrumbItem active>{this.props.name}</BreadcrumbItem>
+
+                        </Breadcrumb>
+                        <div className={"col-12"}>
+                            <h3>Menu</h3>
+                        </div>
+                    </div>
                     <div className={"row"}>
                         <div className={"col-12 col-md-5 m-1"}>
                             <Card>
