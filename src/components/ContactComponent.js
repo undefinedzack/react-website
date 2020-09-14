@@ -186,7 +186,7 @@ class Contact extends Component {
                         </FormGroup>
                         <FormGroup as={Row} >
                             <Col md={{size : 6 ,offset:2}}>
-                                <FormGroup >
+                                <FormGroup>
                                     <Form.Check
                                         type={"checkbox"}
                                         id={"agree"}
