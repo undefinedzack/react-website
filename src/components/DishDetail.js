@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Breadcrumb, BreadcrumbItem, Card} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import CommentForm from "./CommentFormComponent";
 
 class DishDetail extends Component{
 
@@ -23,39 +24,40 @@ class DishDetail extends Component{
              )
         });
 
-            return (
-                <div className={"container"}>
-                    <div className={"row"}>
-                        <Breadcrumb>
-                            <BreadcrumbItem><Link to={'/menu'}>Menu</Link></BreadcrumbItem>
-                            <BreadcrumbItem active>{this.props.name}</BreadcrumbItem>
+        return (
+            <div className={"container"}>
+                <div className={"row"}>
+                    <Breadcrumb>
+                        <BreadcrumbItem><Link to={'/menu'}>Menu</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>{this.props.name}</BreadcrumbItem>
 
-                        </Breadcrumb>
-                        <div className={"col-12"}>
-                            <h3>Menu</h3>
-                        </div>
-                    </div>
-                    <div className={"row"}>
-                        <div className={"col-12 col-md-5 m-1"}>
-                            <Card>
-                                <Card.Img src={current_dish.image} alt={current_dish.name}/>
-                                <Card.Body>
-                                    <Card.Title>{current_dish.name}</Card.Title>
-                                    <Card.Text>{current_dish.description}</Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </div>
-                        <div className={"col-12 col-md-5 m-1"}>
-                            <Card>
-                                <Card.Title> Comments </Card.Title>
-                                <Card.Body>
-                                    {comments}
-                                </Card.Body>
-                            </Card>
-                        </div>
+                    </Breadcrumb>
+                    <div className={"col-12"}>
+                        <h3>Menu</h3>
                     </div>
                 </div>
-         );
+                <div className={"row"}>
+                    <div className={"col-12 col-md-5 m-1"}>
+                        <Card>
+                            <Card.Img src={current_dish.image} alt={current_dish.name}/>
+                            <Card.Body>
+                                <Card.Title>{current_dish.name}</Card.Title>
+                                <Card.Text>{current_dish.description}</Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </div>
+                    <div className={"col-12 col-md-5 m-1"}>
+                        <Card>
+                            <Card.Title> Comments </Card.Title>
+                            <Card.Body>
+                                {comments}
+                            </Card.Body>
+                        </Card>
+                        <CommentForm />
+                    </div>
+                </div>
+            </div>
+     );
         }
         else {
             return(

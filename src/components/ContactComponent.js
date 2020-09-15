@@ -72,6 +72,7 @@ class Contact extends Component {
                             <Form.Label column md={"2"}>First Name</Form.Label>
                             <Col md={"10"}>
                                 <Control.text
+                                    placeholder={"First Name"}
                                     className={"form-control"}
                                     model={".firstname"}
                                     validators={{
@@ -79,7 +80,6 @@ class Contact extends Component {
                                         minLength: minLength(3),
                                         maxLength: maxLength(15)
                                     }}
-                                    placeholder={"First Name"}
                                 />
                                 <Errors
                                     model={".firstname"}
