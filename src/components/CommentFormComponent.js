@@ -19,8 +19,9 @@ class CommentForm extends Component{
     }
 
     handleSubmit(values){
-        console.log("current state is: "+JSON.stringify(values));
+        this.toggleModal();
         alert("current state is: "+JSON.stringify(values));
+        this.props.addComment(this.props.dishId, values.rating, values.name, values.comment);
     }
 
     toggleModal() {
@@ -45,11 +46,11 @@ class CommentForm extends Component{
                                     model={".rating"}
                                     className={"form-control"}
                                 >
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
                                 </Control.select>
                             </FormGroup>
                             <FormGroup controlId={"name"}>
@@ -81,12 +82,12 @@ class CommentForm extends Component{
                                         <Control.textarea
                                             model={".comment"}
                                             rows={"12"}
-                                            className={"comment"}
+                                            className={"form-control"}
                                         />
                                     </Col>
                                 </Row>
                             </FormGroup>
-                            <Button type={"submit"} value={"submit"} color={"primary"}>Submit</Button>
+                            <Button type={"submit"} color={"primary"}>Submit</Button>
                         </LocalForm>
                    </Modal.Body>
                </Modal>
