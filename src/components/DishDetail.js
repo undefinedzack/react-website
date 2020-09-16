@@ -3,6 +3,8 @@ import {Breadcrumb, BreadcrumbItem, Card} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import CommentForm from "./CommentFormComponent";
 import {Loading} from "./LoadingComponent";
+import {baseUrl} from "../shared/baseUrl";
+
 
 class DishDetail extends Component{
 
@@ -60,7 +62,7 @@ class DishDetail extends Component{
                     <div className={"row"}>
                         <div className={"col-12 col-md-5 m-1"}>
                             <Card>
-                                <Card.Img src={current_dish.image} alt={current_dish.name}/>
+                                <Card.Img src={baseUrl+current_dish.image} alt={current_dish.name}/>
                                 <Card.Body>
                                     <Card.Title>{current_dish.name}</Card.Title>
                                     <Card.Text>{current_dish.description}</Card.Text>

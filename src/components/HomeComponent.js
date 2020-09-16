@@ -1,6 +1,7 @@
 import React from "react";
 import {Card} from "react-bootstrap";
 import {Loading} from "./LoadingComponent";
+import {baseUrl} from "../shared/baseUrl";
 
 function Home(props){
 
@@ -19,7 +20,7 @@ function Home(props){
         else {
             return (
                 <Card>
-                    <Card.Img src={item.image} alt={item.name}/>
+                    <Card.Img src={baseUrl+item.image} alt={item.name}/>
                     <Card.Body>
                         <Card.Title>{item.name}</Card.Title>
                         {item.designation ? <Card.Subtitle> {item.designation} </Card.Subtitle> : null}
@@ -40,7 +41,10 @@ function Home(props){
                   />
               </div>
               <div className={"col-12 col-md m-1"}>
-                  <RenderCard item={props.promotion} />
+                  <RenderCard item={props.promotion}
+                              isLoading={props.promosLoading}
+                              errMess={props.promosErrMess}
+                  />
               </div>
               <div className={"col-12 col-md m-1"}>
                   <RenderCard item={props.leader} />
