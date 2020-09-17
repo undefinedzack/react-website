@@ -76,7 +76,9 @@ class DishDetail extends Component{
                                     {comments}
                                 </Card.Body>
                             </Card>
-                            <CommentForm dishId={current_dish.dishId} addComment={this.props.addComment}/>
+                            <CommentForm dishId={current_dish.dishId}
+                                         addComment={this.props.addComment}
+                                         postComment={this.props.postComment}/>
                         </div>
                     </div>
                 </div>
