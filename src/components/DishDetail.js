@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import CommentForm from "./CommentFormComponent";
 import {Loading} from "./LoadingComponent";
 import {baseUrl} from "../shared/baseUrl";
+import { FadeTransform, Fade, Stagger  } from 'react-animation-components';
 
 
 class DishDetail extends Component{
@@ -29,22 +30,26 @@ class DishDetail extends Component{
                 </div>
             );
         } else if (current_dish != null) {
+
             const comments = this.props.comments.map((comment) => {
                 return (
-                    <div key={this.props.comments.id} className={"row"}>
-                        <div className={"col-12 m-2"}>
-                            {comment.comment}
+                    <Fade in>
+                        <div key={this.props.comments.id} className={"row"}>
+                            <div className={"col-12 m-2"}>
+                                {comment.comment}
+                            </div>
+                            <div className={"col-12 m-2"}>
+                                -- {comment.author} {new Intl.DateTimeFormat('en-US', {
+                                year: 'numeric',
+                                month: 'short',
+                                day: '2-digit'
+                            }).format(new Date(Date.parse(comment.date)))}
+                            </div>
                         </div>
-                        <div className={"col-12 m-2"}>
-                            -- {comment.author} {new Intl.DateTimeFormat('en-US', {
-                            year: 'numeric',
-                            month: 'short',
-                            day: '2-digit'
-                        }).format(new Date(Date.parse(comment.date)))}
-                        </div>
-                    </div>
+                    </Fade>
                 )
             });
+
 
             return (
 
@@ -61,19 +66,26 @@ class DishDetail extends Component{
                     </div>
                     <div className={"row"}>
                         <div className={"col-12 col-md-5 m-1"}>
-                            <Card>
-                                <Card.Img src={baseUrl+current_dish.image} alt={current_dish.name}/>
-                                <Card.Body>
-                                    <Card.Title>{current_dish.name}</Card.Title>
-                                    <Card.Text>{current_dish.description}</Card.Text>
-                                </Card.Body>
-                            </Card>
+                            <FadeTransform in
+                               transformProps={{
+                                   exitTransform: 'scale(0.5) translateY(-50%)'
+                               }}>
+                                <Card>
+                                    <Card.Img src={baseUrl+current_dish.image} alt={current_dish.name}/>
+                                    <Card.Body>
+                                        <Card.Title>{current_dish.name}</Card.Title>
+                                        <Card.Text>{current_dish.description}</Card.Text>
+                                    </Card.Body>
+                                </Card>
+                            </FadeTransform>
                         </div>
                         <div className={"col-12 col-md-5 m-1"}>
                             <Card>
                                 <Card.Title> Comments </Card.Title>
                                 <Card.Body>
-                                    {comments}
+                                    <Stagger in>
+                                        {comments}
+                                    </Stagger>
                                 </Card.Body>
                             </Card>
                             <CommentForm dishId={current_dish.dishId}
