@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {Breadcrumb, Card, Media} from "react-bootstrap";
+import {baseUrl} from "../shared/baseUrl";
 
 function About(props) {
 
-    const leaders = props.leaders.map((leader) => {
+    const leaders = props.leaders.leaders.map((leader) => {
         return (
             RenderLeader(leader)
         );
@@ -13,7 +14,7 @@ function About(props) {
     function RenderLeader(leader) {
         return(
             <Media as={"li"}>
-                <img height={"74"} width={"74"} className={"mr-5"} src={leader.image}/>
+                <img height={"74"} width={"74"} className={"mr-5"} src={baseUrl+leader.image}/>
                 <Media.Body>
                     <h4>{leader.name}</h4>
                     <h6>{leader.designation}</h6>

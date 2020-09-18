@@ -34,18 +34,18 @@ class DishDetail extends Component{
             const comments = this.props.comments.map((comment) => {
                 return (
                     <Fade in>
-                        <div key={this.props.comments.id} className={"row"}>
-                            <div className={"col-12 m-2"}>
-                                {comment.comment}
-                            </div>
-                            <div className={"col-12 m-2"}>
-                                -- {comment.author} {new Intl.DateTimeFormat('en-US', {
-                                year: 'numeric',
-                                month: 'short',
-                                day: '2-digit'
-                            }).format(new Date(Date.parse(comment.date)))}
-                            </div>
+                    <div key={this.props.comments.id} className={"row"}>
+                        <div className={"col-12 m-2"}>
+                            {comment.comment}
                         </div>
+                        <div className={"col-12 m-2"}>
+                            -- {comment.author} {new Intl.DateTimeFormat('en-US', {
+                            year: 'numeric',
+                            month: 'short',
+                            day: '2-digit'
+                        }).format(new Date(Date.parse(comment.date)))}
+                        </div>
+                    </div>
                     </Fade>
                 )
             });
